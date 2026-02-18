@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  /* Our "Being Perfect" Color Palette */
+  --color-brand-dark: #0f172a;   /* Deep slate background */
+  --color-brand-card: #1e293b;   /* Lighter card bg */
+  --color-brand-border: #334155; /* Subtle borders */
+  --color-brand-text: #f1f5f9;   /* Main text color */
+  --color-brand-muted: #94a3b8;  /* Secondary text */
+  --color-brand-accent: #6366f1; /* Indigo brand accent */
+  --color-brand-glow: #818cf8;   /* Lighter indigo for hover/glow */
+
+  /* Custom Animation */
+  --animate-spin-slow: spin 3s linear infinite;
+}
+
+/* Global Styles */
+body {
+  background-color: var(--color-brand-dark);
+  color: var(--color-brand-text);
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
