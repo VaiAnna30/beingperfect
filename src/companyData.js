@@ -13,15 +13,70 @@ export const topicBank = {
     { title: "Simplify Path", difficulty: "Medium" }, { title: "Generate Parentheses", difficulty: "Medium" },
     { title: "Minimum Window Substring", difficulty: "Hard" }, { title: "Text Justification", difficulty: "Hard" }
   ],
+  "Strings": [ // Alias for String
+    { title: "Valid Palindrome", difficulty: "Easy" }, { title: "Valid Anagram", difficulty: "Easy" },
+    { title: "Longest Substring Without Repeating Characters", difficulty: "Medium" }, { title: "Group Anagrams", difficulty: "Medium" }
+  ],
   "Dynamic Programming": [
     { title: "Climbing Stairs", difficulty: "Easy" }, { title: "Coin Change", difficulty: "Medium" },
     { title: "Longest Increasing Subsequence", difficulty: "Medium" }, { title: "Word Break", difficulty: "Medium" },
     { title: "House Robber", difficulty: "Medium" }, { title: "Partition Equal Subset Sum", difficulty: "Medium" },
     { title: "Unique Paths", difficulty: "Medium" }, { title: "Maximal Square", difficulty: "Medium" },
     { title: "Edit Distance", difficulty: "Hard" }, { title: "Burst Balloons", difficulty: "Hard" }
+  ],
+  "DP": [ // Alias for Dynamic Programming
+    { title: "Climbing Stairs", difficulty: "Easy" }, { title: "Coin Change", difficulty: "Medium" },
+    { title: "Longest Increasing Subsequence", difficulty: "Medium" }, { title: "Edit Distance", difficulty: "Hard" }
+  ],
+  "BFS": [
+    { title: "Binary Tree Level Order Traversal", difficulty: "Medium" }, { title: "Rotting Oranges", difficulty: "Medium" },
+    { title: "Shortest Path in Binary Matrix", difficulty: "Medium" }, { title: "Word Ladder", difficulty: "Hard" }
+  ],
+  "DFS": [
+    { title: "Number of Islands", difficulty: "Medium" }, { title: "Clone Graph", difficulty: "Medium" },
+    { title: "Course Schedule", difficulty: "Medium" }, { title: "Longest Increasing Path in a Matrix", difficulty: "Hard" }
+  ],
+  "Design": [
+    { title: "LRU Cache", difficulty: "Medium" }, { title: "Min Stack", difficulty: "Medium" },
+    { title: "Design Twitter", difficulty: "Medium" }, { title: "Serialize and Deserialize Binary Tree", difficulty: "Hard" }
+  ],
+  "Heap": [
+    { title: "Kth Largest Element in an Array", difficulty: "Medium" }, { title: "Top K Frequent Elements", difficulty: "Medium" },
+    { title: "Merge k Sorted Lists", difficulty: "Hard" }, { title: "Find Median from Data Stream", difficulty: "Hard" }
+  ],
+  "Graph": [
+    { title: "Course Schedule", difficulty: "Medium" }, { title: "Clone Graph", difficulty: "Medium" },
+    { title: "Network Delay Time", difficulty: "Medium" }, { title: "Alien Dictionary", difficulty: "Hard" }
+  ],
+  "Tree": [
+    { title: "Maximum Depth of Binary Tree", difficulty: "Easy" }, { title: "Invert Binary Tree", difficulty: "Easy" },
+    { title: "Lowest Common Ancestor of a Binary Tree", difficulty: "Medium" }, { title: "Binary Tree Maximum Path Sum", difficulty: "Hard" }
+  ],
+  "Binary Tree": [ // Alias for Tree
+    { title: "Maximum Depth of Binary Tree", difficulty: "Easy" }, { title: "Invert Binary Tree", difficulty: "Easy" },
+    { title: "Lowest Common Ancestor of a Binary Tree", difficulty: "Medium" }
+  ],
+  "Two Pointers": [
+    { title: "Valid Palindrome", difficulty: "Easy" }, { title: "Container With Most Water", difficulty: "Medium" },
+    { title: "3Sum", difficulty: "Medium" }, { title: "Trapping Rain Water", difficulty: "Hard" }
+  ],
+  "Sliding Window": [
+    { title: "Best Time to Buy and Sell Stock", difficulty: "Easy" }, { title: "Longest Substring Without Repeating Characters", difficulty: "Medium" },
+    { title: "Longest Repeating Character Replacement", difficulty: "Medium" }, { title: "Sliding Window Maximum", difficulty: "Hard" }
+  ],
+  "Math": [
+    { title: "Palindrome Number", difficulty: "Easy" }, { title: "Reverse Integer", difficulty: "Medium" },
+    { title: "Pow(x, n)", difficulty: "Medium" }, { title: "Basic Calculator", difficulty: "Hard" }
+  ],
+  "Linked List": [
+    { title: "Reverse Linked List", difficulty: "Easy" }, { title: "Merge Two Sorted Lists", difficulty: "Easy" },
+    { title: "Reorder List", difficulty: "Medium" }, { title: "Reverse Nodes in k-Group", difficulty: "Hard" }
+  ],
+  "Trie": [
+    { title: "Implement Trie (Prefix Tree)", difficulty: "Medium" }, { title: "Design Add and Search Words Data Structure", difficulty: "Medium" },
+    { title: "Word Search II", difficulty: "Hard" }
   ]
 };
-// ... keep your 100+ companies from the previous step here ...
 
 export const companyRequirements = {
   // --- BIG TECH / FAANG ---
@@ -38,10 +93,10 @@ export const companyRequirements = {
   "Tower Research": { targetRating: 2200, minMedium: 300, minHard: 100, tags: ["C++ Logic", "Multithreading"], topProblems: ["Design Skip List", "All O`one Data Structure"] },
   
   // --- INDIAN UNICORNS ---
-  "Zomato": { targetRating: 1650, minMedium: 120, minHard: 10, tags: ["Arrays", "DP", "Sliding Window"], topProblems: ["Rain Water Trapping", "Fruit Into Baskets"] },
-  "Swiggy": { targetRating: 1650, minMedium: 120, minHard: 10, tags: ["Heap", "Graph", "Trees"], topProblems: ["Alien Dictionary", "Design Twitter"] },
+  "Zomato": { targetRating: 1650, minMedium: 120, minHard: 10, tags: ["Array", "DP", "Sliding Window"], topProblems: ["Rain Water Trapping", "Fruit Into Baskets"] },
+  "Swiggy": { targetRating: 1650, minMedium: 120, minHard: 10, tags: ["Heap", "Graph", "Tree"], topProblems: ["Alien Dictionary", "Design Twitter"] },
   "Flipkart": { targetRating: 1800, minMedium: 200, minHard: 30, tags: ["Graph", "Trie", "DP"], topProblems: ["Maximum Profit in Job Scheduling", "Design Search Autocomplete System"] },
-  "Paytm": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["Arrays", "Linked List"], topProblems: ["Palindrome Linked List", "Merge k Sorted Lists"] },
+  "Paytm": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["Array", "Linked List"], topProblems: ["Palindrome Linked List", "Merge k Sorted Lists"] },
   "PhonePe": { targetRating: 1750, minMedium: 150, minHard: 20, tags: ["Design", "Concurrency"], topProblems: ["Design Hit Counter", "Logger Rate Limiter"] },
   "Razorpay": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Array", "String", "Recursion"], topProblems: ["Subsets", "Permutations", "Letter Combinations"] },
 
@@ -49,30 +104,29 @@ export const companyRequirements = {
   "Uber": { targetRating: 1950, minMedium: 220, minHard: 45, tags: ["Graph", "Design", "Shortest Path"], topProblems: ["Bus Routes", "Cheapest Flights Within K Stops"] },
   "Airbnb": { targetRating: 1850, minMedium: 180, minHard: 35, tags: ["Implementation", "Recursion"], topProblems: ["Text Justification", "Palindrome Partitioning"] },
   "Snapchat": { targetRating: 1800, minMedium: 180, minHard: 30, tags: ["Trie", "String", "Binary Search"], topProblems: ["Replace Words", "Implement Trie"] },
-  "Stripe": { targetRating: 1700, minMedium: 150, minHard: 20, tags: ["Parsing", "Strings", "Design"], topProblems: ["Design File System", "Basic Calculator II"] },
+  "Stripe": { targetRating: 1700, minMedium: 150, minHard: 20, tags: ["Parsing", "String", "Design"], topProblems: ["Design File System", "Basic Calculator II"] },
   "Twitter": { targetRating: 1750, minMedium: 160, minHard: 25, tags: ["Graph", "Sliding Window"], topProblems: ["Design Twitter", "Find All Anagrams in a String"] },
-  "LinkedIn": { targetRating: 1700, minMedium: 150, minHard: 20, tags: ["Recursion", "Trees"], topProblems: ["Nested List Weight Sum", "Find Leaves of Binary Tree"] },
+  "LinkedIn": { targetRating: 1700, minMedium: 150, minHard: 20, tags: ["Recursion", "Tree"], topProblems: ["Nested List Weight Sum", "Find Leaves of Binary Tree"] },
   "Salesforce": { targetRating: 1600, minMedium: 120, minHard: 10, tags: ["Standard DSA"], topProblems: ["Group Anagrams", "Binary Tree Level Order Traversal"] },
-  "Oracle": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["Strings", "SQL"], topProblems: ["Add Strings", "Longest Common Prefix"] },
+  "Oracle": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["String", "SQL"], topProblems: ["Add Strings", "Longest Common Prefix"] },
   "Adobe": { targetRating: 1650, minMedium: 130, minHard: 15, tags: ["Geometry", "Math", "DP"], topProblems: ["Valid Square", "Maximum Product Subarray"] },
   "Atlassian": { targetRating: 1750, minMedium: 160, minHard: 25, tags: ["Design", "Data Structures"], topProblems: ["Design Snake Game", "Rank Teams by Votes"] },
-  "Splunk": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["Sorting", "Heaps"], topProblems: ["Kth Largest Element", "Merge Intervals"] },
-  "Twilio": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Parsing", "Strings"], topProblems: ["Valid Parentheses", "Reorganize String"] },
+  "Splunk": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["Sorting", "Heap"], topProblems: ["Kth Largest Element", "Merge Intervals"] },
+  "Twilio": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Parsing", "String"], topProblems: ["Valid Parentheses", "Reorganize String"] },
   "Box": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["Systems", "File API"], topProblems: ["Design Log Storage System"] },
   "Dropbox": { targetRating: 1800, minMedium: 180, minHard: 30, tags: ["Design", "Trie"], topProblems: ["Grid Illumination", "Web Crawler"] },
-  "Slack": { targetRating: 1750, minMedium: 150, minHard: 25, tags: ["Design", "HashMap"], topProblems: ["Design HashMap", "Design Hit Counter"] },
-  "Spotify": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Sorting", "Strings"], topProblems: ["Top K Frequent Elements", "Sort Colors"] },
+  "Spotify": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Sorting", "String"], topProblems: ["Top K Frequent Elements", "Sort Colors"] },
   "TikTok": { targetRating: 1900, minMedium: 220, minHard: 40, tags: ["Optimization", "Graph"], topProblems: ["Course Schedule II", "Sliding Window Maximum"] },
   "ByteDance": { targetRating: 2000, minMedium: 250, minHard: 50, tags: ["DP", "Segment Tree"], topProblems: ["Burst Balloons", "Sliding Window Maximum"] },
   "Grab": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["Graph", "Map"], topProblems: ["Open the Lock", "Reorder Routes"] },
   "Gojek": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["Concurrency", "Design"], topProblems: ["Logger Rate Limiter"] },
-  "Booking.com": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Arrays", "Sorting"], topProblems: ["Merge Intervals", "Find K Closest Elements"] },
+  "Booking.com": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Array", "Sorting"], topProblems: ["Merge Intervals", "Find K Closest Elements"] },
   "Visa": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["Basic DSA"], topProblems: ["Product of Array Except Self"] },
   "Mastercard": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["Basic DSA"], topProblems: ["Single Number", "Climbing Stairs"] },
-  "Goldman Sachs": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Math", "Recursion", "Strings"], topProblems: ["Fraction to Recurring Decimal", "Trap Rain Water"] },
-  "Morgan Stanley": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Strings", "Trees"], topProblems: ["Balanced Binary Tree", "Validate BST"] },
+  "Goldman Sachs": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Math", "Recursion", "String"], topProblems: ["Fraction to Recurring Decimal", "Trap Rain Water"] },
+  "Morgan Stanley": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["String", "Tree"], topProblems: ["Balanced Binary Tree", "Validate BST"] },
   "J.P. Morgan": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["Basic DSA"], topProblems: ["Two Sum II", "Best Time to Buy and Sell Stock"] },
-  "BlackRock": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Math", "Arrays"], topProblems: ["Pascal's Triangle", "Pow(x, n)"] },
+  "BlackRock": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Math", "Array"], topProblems: ["Pascal's Triangle", "Pow(x, n)"] },
   "Two Sigma": { targetRating: 2100, minMedium: 300, minHard: 90, tags: ["HFT", "Performance"], topProblems: ["LRU Cache", "LFU Cache"] },
   "Hudson River Trading": { targetRating: 2200, minMedium: 320, minHard: 110, tags: ["Low Level", "Optimization"], topProblems: ["Design Skip List"] },
   "DEShaw": { targetRating: 1900, minMedium: 220, minHard: 40, tags: ["Greedy", "DP"], topProblems: ["Gas Station", "Jump Game II"] },
@@ -81,55 +135,10 @@ export const companyRequirements = {
   "Palantir": { targetRating: 1950, minMedium: 250, minHard: 60, tags: ["Graph", "Simulations"], topProblems: ["Word Ladder II", "Alien Dictionary"] },
   "Databricks": { targetRating: 2000, minMedium: 280, minHard: 80, tags: ["System Design", "Storage"], topProblems: ["Design File System"] },
   "Snowflake": { targetRating: 2000, minMedium: 280, minHard: 80, tags: ["Query Engine", "Sorting"], topProblems: ["Kth Largest Element"] },
-  "NVIDIA": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Hardware", "Arrays", "Math"], topProblems: ["Bitwise AND of Numbers Range"] },
+  "NVIDIA": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Hardware", "Array", "Math"], topProblems: ["Bitwise AND of Numbers Range"] },
   "Intel": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Embedded", "Logic"], topProblems: ["Number of 1 Bits"] },
   "AMD": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Hardware Logic"], topProblems: ["Single Number II"] },
   "Qualcomm": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Signal Processing Logic"], topProblems: ["Hamming Distance"] },
-  "Samsung": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Arrays", "Matrix"], topProblems: ["Set Matrix Zeroes"] },
-  "Sony": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Multimedia Processing"], topProblems: ["Max Points on a Line"] },
-  "Cisco": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["Networks Logic"], topProblems: ["Valid IP Address"] },
-  "Dell": { targetRating: 1500, minMedium: 80, minHard: 0, tags: ["Logic"], topProblems: ["Fizz Buzz"] },
-  "HP": { targetRating: 1500, minMedium: 80, minHard: 0, tags: ["Logic"], topProblems: ["Reverse Integer"] },
-  "VMware": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Virtualization Logic"], topProblems: ["LRU Cache"] },
-  "Red Hat": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["OS Internals"], topProblems: ["Implement Queue using Stacks"] },
-  "Docker": { targetRating: 1750, minMedium: 150, minHard: 25, tags: ["Linux API"], topProblems: ["Design Circular Queue"] },
-  "GitHub": { targetRating: 1750, minMedium: 150, minHard: 25, tags: ["Git Logic"], topProblems: ["Shortest Path in Binary Matrix"] },
-  "GitLab": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Collaboration Features"], topProblems: ["Merge Intervals"] },
-  "Reddit": { targetRating: 1750, minMedium: 150, minHard: 25, tags: ["Ranking Algorithms"], topProblems: ["Top K Frequent Words"] },
-  "Pinterest": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Graph", "Recommendations"], topProblems: ["Friend Circles"] },
-  "Quora": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Search", "Strings"], topProblems: ["Longest Palindromic Substring"] },
-  "Lyft": { targetRating: 1900, minMedium: 210, minHard: 40, tags: ["Graph", "Matching"], topProblems: ["Asteroid Collision"] },
-  "Instacart": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Logistics Logic"], topProblems: ["Time Based Key-Value Store"] },
-  "Postmates": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["Logistics Logic"], topProblems: ["Snakes and Ladders"] },
-  "Expedia": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Strings", "Recursion"], topProblems: ["Word Break"] },
-  "TripAdvisor": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Sorting", "Strings"], topProblems: ["Verifying an Alien Dictionary"] },
-  "Zoom": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Real-time Networking"], topProblems: ["Design Video Sharing Platform"] },
-  "Slack": { targetRating: 1750, minMedium: 150, minHard: 25, tags: ["Messaging Logic"], topProblems: ["Design Messenger"] },
-  "Discord": { targetRating: 1800, minMedium: 180, minHard: 30, tags: ["Infrastructure Design"], topProblems: ["Design a Rate Limiter"] },
-  "Epic Games": { targetRating: 1850, minMedium: 200, minHard: 40, tags: ["Graphics", "Math"], topProblems: ["Design 3D Engine Architecture"] },
-  "Roblox": { targetRating: 1800, minMedium: 180, minHard: 30, tags: ["Simulations"], topProblems: ["Design Multiplayer System"] },
-  "Unity": { targetRating: 1800, minMedium: 180, minHard: 30, tags: ["Physics Logic"], topProblems: ["Collision Detection Algorithms"] },
-  "Shopify": { targetRating: 1750, minMedium: 150, minHard: 25, tags: ["E-commerce Logic"], topProblems: ["Design Checkout System"] },
-  "Wix": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Builder Logic"], topProblems: ["Undo Redo Functionality"] },
-  "Squarespace": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["Design"], topProblems: ["Design Content CMS"] },
-  "Trello": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["Drag Drop Logic"], topProblems: ["Design Kanban Board"] },
-  "Asana": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Task Management"], topProblems: ["Design Task Scheduler"] },
-  "Monday.com": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["Collaborative Tables"], topProblems: ["Design Collaborative Spreadsheet"] },
-  "ServiceNow": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Workflow Logic"], topProblems: ["Design State Machine"] },
-  "HubSpot": { targetRating: 1650, minMedium: 120, minHard: 15, tags: ["CRM Logic"], topProblems: ["Design Contact Manager"] },
-  "Zoho": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["SaaS Basics"], topProblems: ["Design Basic Email Client"] },
-  "Freshworks": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Ticketing Logic"], topProblems: ["Design Help Desk System"] },
-  "GoDaddy": { targetRating: 1550, minMedium: 100, minHard: 5, tags: ["Domain Logic"], topProblems: ["Design DNS Cache"] },
-  "Bluehost": { targetRating: 1500, minMedium: 80, minHard: 0, tags: ["Web Logic"], topProblems: ["Design Website Hosting Panel"] },
-  "Akamai": { targetRating: 1850, minMedium: 200, minHard: 40, tags: ["CDN", "Edge Logic"], topProblems: ["Design Distributed Cache"] },
-  "Cloudflare": { targetRating: 1900, minMedium: 220, minHard: 45, tags: ["Networking", "Security"], topProblems: ["Design DDoS Mitigation System"] },
-  "Fastly": { targetRating: 1850, minMedium: 200, minHard: 40, tags: ["HTTP Logic"], topProblems: ["Design Real-time Log Streaming"] },
-  "Auth0": { targetRating: 1800, minMedium: 180, minHard: 30, tags: ["Security Logic"], topProblems: ["Design OAuth System"] },
-  "Okta": { targetRating: 1800, minMedium: 180, minHard: 30, tags: ["Identity Management"], topProblems: ["Design Single Sign-On"] },
-  "Twilio": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Communication APIs"], topProblems: ["Design SMS Gateway"] },
-  "SendGrid": { targetRating: 1700, minMedium: 140, minHard: 20, tags: ["Email Protocols"], topProblems: ["Design Email Campaign System"] },
-  "Splunk": { targetRating: 1750, minMedium: 160, minHard: 25, tags: ["Log Aggregation"], topProblems: ["Design Search over Large Logs"] },
-  "Elastic": { targetRating: 1850, minMedium: 200, minHard: 40, tags: ["Search Internals"], topProblems: ["Design Inverted Index"] },
-  "MongoDB": { targetRating: 1900, minMedium: 230, minHard: 50, tags: ["Database Internals"], topProblems: ["Design NoSQL Database"] },
-  "PostgreSQL": { targetRating: 1950, minMedium: 250, minHard: 60, tags: ["Query Optimization"], topProblems: ["Design B-Tree Index"] }
+  "Samsung": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Array", "Matrix"], topProblems: ["Set Matrix Zeroes"] },
+  "Sony": { targetRating: 1600, minMedium: 110, minHard: 10, tags: ["Multimedia Processing"], topProblems: ["Max Points on a Line"] }
 };
