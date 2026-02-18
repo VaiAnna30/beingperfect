@@ -26,35 +26,53 @@ const Dashboard = () => {
     setPrivacyWarning(false);
     
     try {
-      // Direct fetching from Alfa API (Handles CORS natively)
-      const fetchApi = async (endpoint) => {
-        const res = await fetch(`https://alfa-leetcode-api.onrender.com/${endpoint}`);
-        if (!res.ok) throw new Error("API Error");
-        return await res.json();
-      };
+      // Dono APIs ke Base URLs
+      const alfaApi = `https://alfa-leetcode-api.onrender.com`;
+      const backupApi = `https://leetcode-stats-api.herokuapp.com`;
 
-      // Fetch all endpoints in parallel so one failure doesn't block the rest
+      // Parallel fetching (koi ek fail hua toh dusre block nahi honge)
       const [solvedRes, contestRes, skillRes] = await Promise.allSettled([
-        fetchApi(`${username}/solved`),
-        fetchApi(`${username}/contest`),
-        fetchApi(`skillStats/${username}`) 
+        fetch(`${alfaApi}/${username}/solved`).then(res => res.json()),
+        fetch(`${alfaApi}/${username}/contest`).then(res => res.json()),
+        fetch(`${alfaApi}/skillStats/${username}`).then(res => res.json())
       ]);
 
-      // 1. Handle Profile / Solved Data
-      if (solvedRes.status === 'rejected' || solvedRes.value?.errors) {
-        throw new Error("Failed to find LeetCode data. Check the username.");
+      // 1. Handle Profile / Solved Data (WITH BACKUP API LOGIC)
+      if (solvedRes.status === 'fulfilled' && !solvedRes.value?.errors && solvedRes.value?.solvedProblem !== undefined) {
+        setUserData(solvedRes.value);
+      } else {
+         // Agar Alfa API Vercel pe time out ho jaye, toh Backup API try karo
+         try {
+            const backupFetch = await fetch(`${backupApi}/${username}`);
+            const backupData = await backupFetch.json();
+            
+            if (backupData.status === "success") {
+                setUserData({
+                    mediumSolved: backupData.mediumSolved,
+                    hardSolved: backupData.hardSolved
+                });
+            } else {
+                throw new Error("Backup API also failed");
+            }
+         } catch(e) {
+            // Agar dono API fail ho jayein, tab bhi APP CRASH NAHI HOGI! Default values assign hongi.
+            console.error("APIs failed due to Vercel timeout, loading dashboard with default values.");
+            setUserData({ mediumSolved: 0, hardSolved: 0 });
+            setPrivacyWarning(true);
+         }
       }
-      setUserData(solvedRes.value);
 
-      // 2. Handle Contest Data (Default to 1500 if no contest history)
+      // 2. Handle Contest Data Safely
       if (contestRes.status === 'fulfilled' && contestRes.value?.contestRating) {
         setContestData({
           rating: Math.round(contestRes.value.contestRating),
           rank: contestRes.value.contestGlobalRanking || "N/A"
         });
+      } else {
+         setContestData({ rating: 1500, rank: "N/A" });
       }
 
-      // 3. Handle Skill Stats Data
+      // 3. Handle Skill Stats Data Safely
       if (skillRes.status === 'fulfilled' && skillRes.value?.data?.matchedUser?.tagProblemCounts) {
         const tags = skillRes.value.data.matchedUser.tagProblemCounts;
         if (!tags.advanced?.length && !tags.intermediate?.length && !tags.fundamental?.length) {
@@ -71,7 +89,8 @@ const Dashboard = () => {
       }
 
     } catch (e) { 
-      setError(e.message); 
+      // Ab ye error screen pe tabhi aayega jab user ka internet hi band ho
+      setError("Network issue detected. Please check your connection."); 
     } finally { 
       setLoading(false); 
     }
@@ -82,10 +101,8 @@ const Dashboard = () => {
   if (loading) return <LoadingScreen />;
   if (error) return <ErrorScreen error={error} retry={fetchRealData} navigate={navigate} />;
 
-  // --- DYNAMIC RATING & LEVEL LOGIC ---
+  // --- DYNAMIC RATING LOGIC ---
   const realRating = contestData.rating;
-  
-  // Calculate LeetCode Tier
   let levelTitle = "Pupil";
   let levelColor = "text-[#6366f1]";
   let trophyColor = "text-gray-400";
@@ -98,26 +115,31 @@ const Dashboard = () => {
       levelTitle = "Specialist"; levelColor = "text-emerald-400"; trophyColor = "text-emerald-400";
   }
 
-  // Calculate Readiness Score
   const ratingProgress = Math.min((realRating / target.targetRating) * 100, 100);
   const mediumProgress = Math.min(((userData?.mediumSolved || 0) / target.minMedium) * 100, 100);
   const totalScore = Math.round((ratingProgress * 0.7) + (mediumProgress * 0.3));
 
-  // --- FALLBACK LOGIC FIX ---
+  // --- BULLETPROOF FALLBACK LOGIC FIX FOR TAGS ---
   const recoveryPlan = (target.tags || target.requiredTags || ["Array", "String", "Dynamic Programming"]).map(tag => {
-    // 1. Find the user's solved count for this tag
     const found = skillStats.find(t => 
         t.tagName.toLowerCase().includes(tag.toLowerCase()) || 
         tag.toLowerCase().includes(t.tagName.toLowerCase())
     );
     const solved = found ? found.problemsSolved : 0;
     
-    // 2. Fetch from our Data Flow dictionary OR generate dynamic placeholders if not found
-    const recommendedQuestions = topicBank[tag] || topicBank[tag.replace(/s$/, '')] || [
-        { title: `Top ${tag} Interview Questions`, difficulty: "Medium" },
-        { title: `Essential ${tag} Algorithms`, difficulty: "Medium" },
-        { title: `Advanced ${tag} Patterns`, difficulty: "Hard" }
-    ];
+    // Exact match dhoondne ke liye improved logic
+    const targetTag = tag.trim();
+    let exactKey = Object.keys(topicBank).find(k => k.toLowerCase() === targetTag.toLowerCase());
+    
+    let recommendedQuestions = topicBank[exactKey] || topicBank[targetTag] || topicBank[targetTag.replace(/s$/, '')];
+    
+    if (!recommendedQuestions) {
+        recommendedQuestions = [
+            { title: `Top ${targetTag} Interview Questions`, difficulty: "Medium" },
+            { title: `Essential ${targetTag} Algorithms`, difficulty: "Medium" },
+            { title: `Advanced ${targetTag} Patterns`, difficulty: "Hard" }
+        ];
+    }
     
     return { tag, solved, questions: recommendedQuestions };
   });
@@ -138,7 +160,6 @@ const Dashboard = () => {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Rating Section */}
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-[#16161a] p-8 rounded-3xl border border-gray-800 text-center shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#6366f1]"></div>
@@ -159,7 +180,6 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Recovery Plan / Must Do Section */}
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-gradient-to-br from-indigo-950/30 to-[#16161a] p-8 rounded-3xl border border-gray-800 flex justify-between items-center shadow-lg">
                 <div>
@@ -177,7 +197,7 @@ const Dashboard = () => {
               {privacyWarning && (
                 <div className="mb-8 p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center gap-3">
                     <Settings className="text-amber-400" size={18} />
-                    <p className="text-xs text-gray-400">Skill tags are hidden on this profile. Showing standard high-frequency questions for {company} prep.</p>
+                    <p className="text-xs text-gray-400">Skill tags hidden or API timeout on Vercel. Showing standard high-frequency questions for {company}.</p>
                 </div>
               )}
 
@@ -211,7 +231,6 @@ const Dashboard = () => {
   );
 };
 
-// Sub-components
 const StatBar = ({ label, count, target, color }) => (
     <div className="space-y-1">
         <div className="flex justify-between text-[10px] font-bold uppercase text-gray-500"><span>{label}</span><span>{count} / {target}</span></div>
